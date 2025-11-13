@@ -1,0 +1,130 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Fitness Studio | Register</title>
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
+  <style>
+    .navbar {
+      background-color: #222;
+    }
+    .navbar-brand, .nav-link {
+      color: white !important;
+      font-weight: 500;
+    }
+    footer {
+      background-color: #222;
+      color: white;
+      text-align: center;
+      padding: 10px 0;
+      margin-top: 30px;
+    }
+  </style>
+</head>
+<body>
+
+  <!-- Navbar -->
+  <nav class="navbar navbar-expand-lg navbar-dark">
+    <div class="container">
+      <a class="navbar-brand" href="HomePage.html">Fitness Studio</a>
+      <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav">
+        <span class="navbar-toggler-icon"></span>
+      </button>
+      <div class="collapse navbar-collapse" id="navbarNav">
+        <ul class="navbar-nav ms-auto">
+          <li class="nav-item"><a class="nav-link" href="HomePage.html">Home</a></li>
+          <li class="nav-item"><a class="nav-link" href="TrainersPage.html">Trainers</a></li>
+          <li class="nav-item"><a class="nav-link" href="SchedulePage.html">Schedule</a></li>
+          <li class="nav-item"><a class="nav-link active" href="RegistrationPage.html">Register</a></li>
+        </ul>
+      </div>
+    </div>
+  </nav>
+
+  <!-- Registration Form Section -->
+  <section class="container my-5">
+    <h2 class="text-center mb-4">Register for a Free Trial Class</h2>
+    <form id="trialForm" novalidate>
+      <div class="row g-3">
+        <div class="col-md-6">
+          <label for="fullName" class="form-label">Full Name</label>
+          <input type="text" class="form-control" id="fullName" required>
+          <div class="invalid-feedback">Please enter your full name.</div>
+        </div>
+
+        <div class="col-md-6">
+          <label for="email" class="form-label">Email</label>
+          <input type="email" class="form-control" id="email" required>
+          <div class="invalid-feedback">Please enter a valid email address.</div>
+        </div>
+
+        <div class="col-md-6">
+          <label for="phone" class="form-label">Phone Number</label>
+          <input type="tel" class="form-control" id="phone" required pattern="[0-9]{10,15}">
+          <div class="invalid-feedback">Please enter a valid phone number (10–15 digits).</div>
+        </div>
+
+        <div class="col-md-6">
+          <label for="session" class="form-label">Preferred Session</label>
+          <select class="form-select" id="session" required>
+            <option value="">Choose...</option>
+            <option>Yoga - Mon 7:00 AM</option>
+            <option>Zumba - Sat 7:00 AM</option>
+            <option>Strength - Wed 6:30 PM</option>
+          </select>
+          <div class="invalid-feedback">Please select a session.</div>
+        </div>
+
+        <div class="col-12 text-center">
+          <button class="btn btn-primary px-4" type="submit">Submit</button>
+        </div>
+      </div>
+    </form>
+
+    <!-- View Schedule Button -->
+    <div class="text-center mt-4">
+      <a href="SchedulePage.html" class="btn btn-outline-light">View Schedule</a>
+    </div>
+
+    <!-- Success Modal -->
+    <div class="modal fade" id="successModal" tabindex="-1">
+      <div class="modal-dialog">
+        <div class="modal-content">
+          <div class="modal-header">
+            <h5 class="modal-title">Success!</h5>
+            <button type="button" class="btn-close" data-bs-dismiss="modal"></button>
+          </div>
+          <div class="modal-body">Thank you for registering! We’ll contact you soon.</div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Footer -->
+  <footer>
+    @Fitness Studio. All Rights Reserved
+  </footer>
+
+  <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
+  <script>
+    // Form validation and success modal
+    document.addEventListener("DOMContentLoaded", function () {
+      const form = document.getElementById("trialForm");
+      const successModal = new bootstrap.Modal(document.getElementById("successModal"));
+
+      form.addEventListener("submit", function (event) {
+        event.preventDefault();
+        if (!form.checkValidity()) {
+          event.stopPropagation();
+          form.classList.add("was-validated");
+        } else {
+          form.reset();
+          form.classList.remove("was-validated");
+          successModal.show();
+        }
+      });
+    });
+  </script>
+</body>
+</html>
